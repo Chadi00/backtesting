@@ -64,6 +64,7 @@ ipch/
 *.sln
 *.dbmdl
 *.sln.docstates
+*.vcxproj
 *.vcxproj.*
 *.vcxproj.filters
 *.vcxproj.user
