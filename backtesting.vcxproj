@@ -104,7 +104,7 @@
       <SDLCheck>true</SDLCheck>
       <PreprocessorDefinitions>_DEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
-      <AdditionalIncludeDirectories>$(SolutionDir)headers</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>$(SolutionDir)headers;$(SolutionDir)lib</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
@@ -133,9 +133,19 @@
   <ItemGroup>
     <ClInclude Include="headers\data_point.hpp" />
     <ClInclude Include="headers\data_provider.hpp" />
+    <ClInclude Include="headers\metrics_calculator.hpp" />
+    <ClInclude Include="headers\polygon_data_provider.hpp" />
+    <ClInclude Include="headers\simple_moving_average_strategy.hpp" />
+    <ClInclude Include="headers\simulator.hpp" />
+    <ClInclude Include="headers\strategy.hpp" />
+    <ClInclude Include="lib\json.hpp" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="src\main.cpp" />
+    <ClCompile Include="src\metrics_calculator.cpp" />
+    <ClCompile Include="src\polygon_data_provider.cpp" />
+    <ClCompile Include="src\simple_moving_average_strategy.cpp" />
+    <ClCompile Include="src\simulator.cpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
