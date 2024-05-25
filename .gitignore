@@ -1,0 +1,92 @@
+# Compiled source files
+*.com
+*.class
+*.dll
+*.exe
+*.o
+*.so
+
+# Compiled Object files
+*.obj
+*.pyc
+*.pyo
+*.pdb
+
+# Precompiled Headers
+*.gch
+*.pch
+
+# Libraries
+*.lib
+*.a
+*.la
+*.lo
+
+# Shared objects (Linux)
+*.so
+
+# Executables
+*.exe
+*.out
+*.app
+*.i*86
+*.x86_64
+*.hex
+
+# Debug files
+*.dSYM/
+*.su
+*.idb
+*.pdb
+*.ipdb
+*.pgd
+*.pgc
+
+# Logs and databases
+*.log
+*.sql
+*.sqlite
+
+# Windows thumbnail cache files
+Thumbs.db
+
+# Folders
+Debug/
+Release/
+x64/
+ipch/
+*.ipch
+*.aps
+*.ncb
+*.opensdf
+*.sdf
+*.suo
+*.sln
+*.dbmdl
+*.sln.docstates
+*.vcxproj.*
+*.vcxproj.filters
+*.vcxproj.user
+*.user
+*.gp*
+*.clang-format
+
+# OSX
+.DS_Store
+.AppleDouble
+.LSOverride
+
+# Visual Studio
+.vscode/
+.vs/
+.vscode
+.vscode/settings.json
+*.plist
+*.workspace
+.vscode/launch.json
+.vscode/tasks.json
+.vscode/c_cpp_properties.json
+CMakeLists.txt.user
+*.VC.db
+*.VC.opendb
+*.VC.VC.db
