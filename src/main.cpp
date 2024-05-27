@@ -1,6 +1,5 @@
 #include <iostream>
 
-// Declare the runTests function
 void runTests();
 
 int main() {
