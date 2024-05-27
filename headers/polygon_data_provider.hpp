@@ -5,5 +5,5 @@
 
 class PolygonDataProvider : public DataProvider {
 public:
-    std::vector<DataPoint> fetchData(const std::string& symbol, const std::string& timeframe) override;
+    std::vector<DataPoint> fetchData(const std::string& symbol, const std::string& startDate, const std::string& endDate) override;
 };

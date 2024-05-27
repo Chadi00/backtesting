@@ -13,19 +13,21 @@ static size_t WriteCallback(void* contents, size_t size, size_t nmemb, void* use
     return size * nmemb;
 }
 
-std::vector<DataPoint> PolygonDataProvider::fetchData(const std::string& symbol, const std::string& timeframe) {
+std::vector<DataPoint> PolygonDataProvider::fetchData(const std::string& symbol, const std::string& startDate, const std::string& endDate) {
     std::vector<DataPoint> dataPoints;
+    CURL* curl;
+    CURLcode res;
     std::string readBuffer;
 
-    // Initialize CURL
-    CURL* curl = curl_easy_init();
+    curl_global_init(CURL_GLOBAL_DEFAULT);
+    curl = curl_easy_init();
     if (curl) {
-        std::string url = "https://api.polygon.io/v1/historic/" + timeframe + "/" + symbol + "?apiKey=YOUR_API_KEY";
+        std::string url = "https://api.polygon.io/v2/aggs/ticker/" + symbol + "/range/1/day/" + startDate + "/" + endDate + "?adjusted=true&sort=asc&apiKey=yP46qsV9p5fdYUXFjfNC9Ii2XTsffYVj";
         curl_easy_setopt(curl, CURLOPT_URL, url.c_str());
         curl_easy_setopt(curl, CURLOPT_WRITEFUNCTION, WriteCallback);
         curl_easy_setopt(curl, CURLOPT_WRITEDATA, &readBuffer);
 
-        CURLcode res = curl_easy_perform(curl);
+        res = curl_easy_perform(curl);
         if (res != CURLE_OK) {
             std::cerr << "curl_easy_perform() failed: " << curl_easy_strerror(res) << std::endl;
         }
@@ -35,7 +37,7 @@ std::vector<DataPoint> PolygonDataProvider::fetchData(const std::string& symbol,
         auto jsonData = json::parse(readBuffer);
         for (const auto& item : jsonData["results"]) {
             DataPoint dp;
-            dp.timestamp = item["t"];
+            dp.timestamp = std::to_string(item["t"].get<long long>()); 
             dp.open = item["o"];
             dp.high = item["h"];
             dp.low = item["l"];
@@ -44,6 +46,7 @@ std::vector<DataPoint> PolygonDataProvider::fetchData(const std::string& symbol,
             dataPoints.push_back(dp);
         }
     }
+    curl_global_cleanup();
 
     return dataPoints;
 }

@@ -4,12 +4,13 @@
 #include <string>
 
 class Simulator {
+public:
+    Simulator(DataProvider& provider, Strategy& strategy, const std::string& symbol, const std::string& startDate, const std::string& endDate);
+    void run();
 private:
-    DataProvider& dataProvider;
+    DataProvider& provider;
     Strategy& strategy;
     std::string symbol;
-    std::string timeframe;
-public:
-    Simulator(DataProvider& dp, Strategy& strat, const std::string& sym, const std::string& tf);
-    void run();
+    std::string startDate;
+    std::string endDate;
 };

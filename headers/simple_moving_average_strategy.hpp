@@ -1,6 +1,7 @@
 #pragma once
 #include "strategy.hpp"
 #include <deque>
+#include <vector>
 
 class SimpleMovingAverageStrategy : public Strategy {
 private:

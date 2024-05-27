@@ -70,6 +70,10 @@
     <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
   </ImportGroup>
   <PropertyGroup Label="UserMacros" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+    <IncludePath>$(VC_IncludePath);$(WindowsSDK_IncludePath);</IncludePath>
+    <LibraryPath>$(VC_LibraryPath_x64);$(WindowsSDK_LibraryPath_x64);</LibraryPath>
+  </PropertyGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <ClCompile>
       <WarningLevel>Level3</WarningLevel>
@@ -102,13 +106,14 @@
     <ClCompile>
       <WarningLevel>Level3</WarningLevel>
       <SDLCheck>true</SDLCheck>
-      <PreprocessorDefinitions>_DEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <PreprocessorDefinitions>_DEBUG;_CONSOLE;%(PreprocessorDefinitions);CURL_STATICLIB</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
-      <AdditionalIncludeDirectories>$(SolutionDir)headers;$(SolutionDir)lib</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>$(SolutionDir)headers;$(SolutionDir)lib;$(SolutionDir)tests;</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
       <GenerateDebugInformation>true</GenerateDebugInformation>
+      <AdditionalDependencies>$(CoreLibraryDependencies);%(AdditionalDependencies);</AdditionalDependencies>
     </Link>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
@@ -138,6 +143,7 @@
     <ClInclude Include="headers\simple_moving_average_strategy.hpp" />
     <ClInclude Include="headers\simulator.hpp" />
     <ClInclude Include="headers\strategy.hpp" />
+    <ClInclude Include="lib\httplib.h" />
     <ClInclude Include="lib\json.hpp" />
   </ItemGroup>
   <ItemGroup>
@@ -146,6 +152,13 @@
     <ClCompile Include="src\polygon_data_provider.cpp" />
     <ClCompile Include="src\simple_moving_average_strategy.cpp" />
     <ClCompile Include="src\simulator.cpp" />
+    <ClCompile Include="tests\run_tests.cpp" />
+    <ClCompile Include="tests\test_data_point.cpp" />
+    <ClCompile Include="tests\test_metrics_calculator.cpp" />
+    <ClCompile Include="tests\test_polygon_data_provider.cpp" />
+    <ClCompile Include="tests\test_simple_moving_average_strategy.cpp" />
+    <ClCompile Include="tests\test_simulator.cpp" />
+    <ClCompile Include="tests\test_strategy.cpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

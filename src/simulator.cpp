@@ -1,12 +1,18 @@
 #include "simulator.hpp"
+#include "data_point.hpp"
+#include <iostream>
 
-Simulator::Simulator(DataProvider& dp, Strategy& strat, const std::string& sym, const std::string& tf)
-    : dataProvider(dp), strategy(strat), symbol(sym), timeframe(tf) {}
+Simulator::Simulator(DataProvider& provider, Strategy& strategy, const std::string& symbol, const std::string& startDate, const std::string& endDate)
+    : provider(provider), strategy(strategy), symbol(symbol), startDate(startDate), endDate(endDate) {}
 
 void Simulator::run() {
-    auto data = dataProvider.fetchData(symbol, timeframe);
-    for (const auto& dp : data) {
-        strategy.onTick(dp);
+    std::cout << "Fetching data for symbol: " << symbol << " from " << startDate << " to " << endDate << std::endl;
+    auto dataPoints = provider.fetchData(symbol, startDate, endDate);
+    std::cout << "Data fetched: " << dataPoints.size() << " points" << std::endl;
+
+    for (const auto& dataPoint : dataPoints) {
+        std::cout << "Processing data point: " << dataPoint.timestamp << ", Close: " << dataPoint.close << std::endl;
+        strategy.onTick(dataPoint);
     }
     strategy.onEnd();
 }
