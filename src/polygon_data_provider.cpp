@@ -22,7 +22,7 @@ std::vector<DataPoint> PolygonDataProvider::fetchData(const std::string& symbol,
     curl_global_init(CURL_GLOBAL_DEFAULT);
     curl = curl_easy_init();
     if (curl) {
-        std::string url = "https://api.polygon.io/v2/aggs/ticker/" + symbol + "/range/1/day/" + startDate + "/" + endDate + "?adjusted=true&sort=asc&apiKey=yP46qsV9p5fdYUXFjfNC9Ii2XTsffYVj";
+        std::string url = "https://api.polygon.io/v2/aggs/ticker/" + symbol + "/range/1/minute/" + startDate + "/" + endDate + "?adjusted=true&sort=asc&apiKey=yP46qsV9p5fdYUXFjfNC9Ii2XTsffYVj";
         curl_easy_setopt(curl, CURLOPT_URL, url.c_str());
         curl_easy_setopt(curl, CURLOPT_WRITEFUNCTION, WriteCallback);
         curl_easy_setopt(curl, CURLOPT_WRITEDATA, &readBuffer);

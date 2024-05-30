@@ -25,3 +25,5 @@ double MetricsCalculator::calculateSuccessRate() const {
     }
     return static_cast<double>(successfulTrades) / transactions.size() * 100;
 }
+
+

@@ -15,3 +15,4 @@ public:
     virtual std::vector<Transaction> getTransactions() const = 0;
     virtual ~Strategy() = default;
 };
+

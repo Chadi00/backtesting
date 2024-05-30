@@ -49,3 +49,5 @@ void SimpleMovingAverageStrategy::onEnd() {
 std::vector<Transaction> SimpleMovingAverageStrategy::getTransactions() const {
     return transactions;
 }
+
+

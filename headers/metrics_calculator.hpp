@@ -11,3 +11,5 @@ public:
     double calculateProfit() const;
     double calculateSuccessRate() const;
 };
+
+
