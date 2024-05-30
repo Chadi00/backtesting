@@ -9,3 +9,11 @@ struct DataPoint {
     double close;
     double volume;
 };
+
+
+
+
+
+
+
+

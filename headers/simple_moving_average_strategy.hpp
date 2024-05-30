@@ -8,9 +8,10 @@ private:
     int period;
     std::deque<double> prices;
     std::vector<Transaction> transactions;
-    double movingAverage() const;
+    
 public:
     SimpleMovingAverageStrategy(int period);
+    double movingAverage() const;
     void onTick(const DataPoint& data) override;
     void onEnd() override;
     std::vector<Transaction> getTransactions() const override;

@@ -50,3 +50,5 @@ std::vector<DataPoint> PolygonDataProvider::fetchData(const std::string& symbol,
 
     return dataPoints;
 }
+
+
